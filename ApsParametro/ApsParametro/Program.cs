@@ -22,9 +22,13 @@ namespace ApsParametro
 		[STAThread]
 		private static void Main(string[] args)
 		{
-			Application.EnableVisualStyles();
-			Application.SetCompatibleTextRenderingDefault(false);
-			Application.Run(new MainForm());
+			Int32 cargumentos=args.Length;
+		
+			System.Console.WriteLine("-M[String]\tMostrar una mensaje");
+			
+			for(Int16 a=0;a<args.Length;a++){
+				MessageBox.Show(""+args[a].ToString(),"MOSTRANDO");
+			}
 		}
 		
 	}
