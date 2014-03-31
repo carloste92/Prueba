@@ -29,6 +29,7 @@ namespace ApsParametro
 			for(Int16 a=0;a<args.Length;a++){
 				MessageBox.Show(""+args[a].ToString(),"MOSTRANDO");
 			}
+			Application.Run(new MainForm());
 		}
 		
 	}
