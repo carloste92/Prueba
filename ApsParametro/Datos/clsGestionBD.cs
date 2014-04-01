@@ -36,10 +36,43 @@ namespace Datos
 		    String cadconexion = clsConexion.cadconexion;
 		    SqlConnection Con = new SqlConnection();
 		 	Con.ConnectionString=cadconexion;
-		    SqlCommand Com= new SqlCommand();
+		 	SqlCommand Com= new SqlCommand(PA,Con);
 		    Com = Con.CreateCommand();
 		    Com.CommandType = CommandType.StoredProcedure;
 		    return Com;
 		}
+		public static Int16 EjecutarComando(SqlCommand Com)
+		{
+			try
+    		{
+		        Com.Connection.Open();
+		        return comando.ExecuteNonQuery();
+    		}
+    		catch { 
+				throw; 
+			}
+    		finally
+    		{
+        		Com.Connection.Dispose();
+        		Com.Connection.Close();
+    		}
+		}
+		public static DataTable EjecutarComandoSelect(SqlCommand Com){
+			DataTable tabla = new DataTable();
+    		try{
+		        comando.Connection.Open();
+		        SqlDataAdapter adaptador = new SqlDataAdapter();
+		        adaptador.SelectCommand = comando;
+		        adaptador.Fill(tabla);
+    		}
+   			catch (Exception ex)
+		    { 
+   				throw ex;
+   			}
+		    finally
+    		{ 
+		    	comando.Connection.Close(); }
+    			return tabla;
+			}
 	}
 }
