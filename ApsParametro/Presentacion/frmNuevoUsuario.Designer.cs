@@ -36,6 +36,7 @@ namespace Presentacion
 		/// </summary>
 		private void InitializeComponent()
 		{
+			this.components = new System.ComponentModel.Container();
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmNuevoUsuario));
 			this.btnOk = new System.Windows.Forms.Button();
 			this.lblNombre = new System.Windows.Forms.Label();
@@ -44,40 +45,49 @@ namespace Presentacion
 			this.txtContra = new System.Windows.Forms.TextBox();
 			this.toolStrip1 = new System.Windows.Forms.ToolStrip();
 			this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
+			this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
 			this.toolStrip1.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// btnOk
 			// 
-			this.btnOk.Location = new System.Drawing.Point(103, 142);
+			this.btnOk.BackColor = System.Drawing.Color.LightBlue;
+			this.btnOk.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Azure;
+			this.btnOk.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this.btnOk.Location = new System.Drawing.Point(90, 173);
 			this.btnOk.Name = "btnOk";
 			this.btnOk.Size = new System.Drawing.Size(109, 31);
 			this.btnOk.TabIndex = 0;
 			this.btnOk.Text = "LISTO!";
-			this.btnOk.UseVisualStyleBackColor = true;
+			this.toolTip1.SetToolTip(this.btnOk, "Guarda Tus Datos ");
+			this.btnOk.UseVisualStyleBackColor = false;
 			this.btnOk.Click += new System.EventHandler(this.BtnOkClick);
 			// 
 			// lblNombre
 			// 
-			this.lblNombre.Location = new System.Drawing.Point(0, 39);
+			this.lblNombre.Font = new System.Drawing.Font("Arial Narrow", 8.25F, System.Drawing.FontStyle.Bold);
+			this.lblNombre.ForeColor = System.Drawing.Color.White;
+			this.lblNombre.Location = new System.Drawing.Point(31, 63);
 			this.lblNombre.Name = "lblNombre";
-			this.lblNombre.Size = new System.Drawing.Size(100, 36);
+			this.lblNombre.Size = new System.Drawing.Size(235, 36);
 			this.lblNombre.TabIndex = 1;
-			this.lblNombre.Text = "Nombre";
-			this.lblNombre.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+			this.lblNombre.Text = "Escribe Tu Nombre";
+			this.lblNombre.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
 			// 
 			// lblContraseña
 			// 
-			this.lblContraseña.Location = new System.Drawing.Point(0, 84);
+			this.lblContraseña.Font = new System.Drawing.Font("Arial Narrow", 8.25F, System.Drawing.FontStyle.Bold);
+			this.lblContraseña.ForeColor = System.Drawing.Color.White;
+			this.lblContraseña.Location = new System.Drawing.Point(31, 129);
 			this.lblContraseña.Name = "lblContraseña";
-			this.lblContraseña.Size = new System.Drawing.Size(100, 32);
+			this.lblContraseña.Size = new System.Drawing.Size(235, 32);
 			this.lblContraseña.TabIndex = 2;
-			this.lblContraseña.Text = "Contraseña";
-			this.lblContraseña.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+			this.lblContraseña.Text = "Escribe tu Contraseña";
+			this.lblContraseña.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
 			// 
 			// txtNombre
 			// 
-			this.txtNombre.Location = new System.Drawing.Point(103, 39);
+			this.txtNombre.Location = new System.Drawing.Point(67, 38);
 			this.txtNombre.Multiline = true;
 			this.txtNombre.Name = "txtNombre";
 			this.txtNombre.Size = new System.Drawing.Size(166, 36);
@@ -85,7 +95,7 @@ namespace Presentacion
 			// 
 			// txtContra
 			// 
-			this.txtContra.Location = new System.Drawing.Point(103, 81);
+			this.txtContra.Location = new System.Drawing.Point(67, 102);
 			this.txtContra.Multiline = true;
 			this.txtContra.Name = "txtContra";
 			this.txtContra.PasswordChar = '*';
@@ -94,12 +104,13 @@ namespace Presentacion
 			// 
 			// toolStrip1
 			// 
+			this.toolStrip1.BackColor = System.Drawing.Color.SlateGray;
 			this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
 									this.toolStripButton1});
 			this.toolStrip1.Location = new System.Drawing.Point(0, 0);
 			this.toolStrip1.Name = "toolStrip1";
 			this.toolStrip1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-			this.toolStrip1.Size = new System.Drawing.Size(313, 25);
+			this.toolStrip1.Size = new System.Drawing.Size(292, 25);
 			this.toolStrip1.TabIndex = 5;
 			this.toolStrip1.Text = "toolStrip1";
 			// 
@@ -116,23 +127,27 @@ namespace Presentacion
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(313, 205);
+			this.BackColor = System.Drawing.Color.SteelBlue;
+			this.ClientSize = new System.Drawing.Size(292, 224);
 			this.Controls.Add(this.toolStrip1);
 			this.Controls.Add(this.txtContra);
 			this.Controls.Add(this.txtNombre);
 			this.Controls.Add(this.lblContraseña);
 			this.Controls.Add(this.lblNombre);
 			this.Controls.Add(this.btnOk);
+			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
 			this.MaximizeBox = false;
 			this.Name = "frmNuevoUsuario";
 			this.ShowIcon = false;
 			this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
+			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "NUEVO";
 			this.toolStrip1.ResumeLayout(false);
 			this.toolStrip1.PerformLayout();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 		}
+		private System.Windows.Forms.ToolTip toolTip1;
 		private System.Windows.Forms.ToolStripButton toolStripButton1;
 		private System.Windows.Forms.ToolStrip toolStrip1;
 		private System.Windows.Forms.TextBox txtContra;

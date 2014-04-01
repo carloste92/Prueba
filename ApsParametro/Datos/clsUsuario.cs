@@ -33,6 +33,8 @@ namespace Datos
 			comando.Parameters.AddWithValue("@contra",contra);
 			return clsGestionBD.EjecutarComando(comando);
 		}
-		
+		public static int ObtenerUsuario(){
+			return 1;
+		}
 	}
 }

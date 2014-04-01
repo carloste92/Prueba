@@ -43,5 +43,10 @@ namespace Presentacion
 		{
 			new frmNuevoUsuario().Visible=true;
 		}
+		
+		void ToolStripButton1Click(object sender, EventArgs e)
+		{
+			this.WindowState= FormWindowState.Minimized;		
+		}
 	}
 }
