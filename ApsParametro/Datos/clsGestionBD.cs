@@ -9,6 +9,7 @@
 
 using System.Data.SqlClient;
 using System.Data;
+using System;
 
 namespace Datos
 {
@@ -39,14 +40,15 @@ namespace Datos
 		 	SqlCommand Com= new SqlCommand(PA,Con);
 		    Com = Con.CreateCommand();
 		    Com.CommandType = CommandType.StoredProcedure;
+		    Com.CommandText=PA;
 		    return Com;
 		}
-		public static Int16 EjecutarComando(SqlCommand Com)
+		public static int EjecutarComando(SqlCommand Com)
 		{
 			try
     		{
 		        Com.Connection.Open();
-		        return comando.ExecuteNonQuery();
+		        return Com.ExecuteNonQuery();
     		}
     		catch { 
 				throw; 
@@ -60,9 +62,9 @@ namespace Datos
 		public static DataTable EjecutarComandoSelect(SqlCommand Com){
 			DataTable tabla = new DataTable();
     		try{
-		        comando.Connection.Open();
+		        Com.Connection.Open();
 		        SqlDataAdapter adaptador = new SqlDataAdapter();
-		        adaptador.SelectCommand = comando;
+		        adaptador.SelectCommand = Com;
 		        adaptador.Fill(tabla);
     		}
    			catch (Exception ex)
@@ -71,7 +73,7 @@ namespace Datos
    			}
 		    finally
     		{ 
-		    	comando.Connection.Close(); }
+		    	Com.Connection.Close(); }
     			return tabla;
 			}
 	}

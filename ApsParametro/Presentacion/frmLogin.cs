@@ -33,5 +33,15 @@ namespace Presentacion
 		{
 			
 		}
+		
+		void FrmLoginLoad(object sender, EventArgs e)
+		{
+			
+		}
+		
+		void TstbtnConfigurarClick(object sender, EventArgs e)
+		{
+			new frmNuevoUsuario().Visible=true;
+		}
 	}
 }

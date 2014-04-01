@@ -15,7 +15,11 @@ namespace Datos
 	/// </summary>
 	public class clsConexion
 	{
-		static String _cadconexion=@"Data Source=ZAY;Initial Catalog=prueba;User ID=ZAY\CJ;Password=";
+		/*
+ 		  @"Data Source=ZAY;Initial Catalog=prueba;User ID=ZAY\CJ;password=***"
+		  @"Data Source=(local);Initial Catalog=prueba;Integrated Security=True"
+		*/
+		static String _cadconexion=@"Data Source=(local);Initial Catalog=prueba;Integrated Security=True";
 		public static String cadconexion{
 			get{
 				return _cadconexion;

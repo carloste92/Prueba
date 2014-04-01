@@ -8,6 +8,7 @@
  */
 using System.Data.SqlClient;
 using System.Data;
+using System;
 
 namespace Datos
 {
@@ -24,11 +25,13 @@ namespace Datos
 			SqlCommand comando=clsGestionBD.CrearComandoProcedimiento("PA_InsertarUsuario");
 			comando.Parameters.AddWithValue("@nombre",nombre);
 			comando.Parameters.AddWithValue("@contra",contra);
+			return clsGestionBD.EjecutarComando(comando);
 		}
 		public static int ModificarUsuario(String nombre,String contra){
-			SqlCommand comando=clsGestionBD.CrearComandoProcedimiento("PA_InsertarUsuario");
+			SqlCommand comando=clsGestionBD.CrearComandoProcedimiento("PA_ModificarUsuario");
 			comando.Parameters.AddWithValue("@nombre",nombre);
 			comando.Parameters.AddWithValue("@contra",contra);
+			return clsGestionBD.EjecutarComando(comando);
 		}
 		
 	}
