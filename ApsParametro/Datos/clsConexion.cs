@@ -10,16 +10,15 @@ using System;
 
 namespace Datos
 {
-	/// <summary>
-	/// Description of clsConexion.
-	/// </summary>
 	public class clsConexion
 	{
-		/*
+		/*Cadenas de conexion para el SGBD Sql server
  		  @"Data Source=ZAY;Initial Catalog=prueba;User ID=ZAY\CJ;password=***"
 		  @"Data Source=(local);Initial Catalog=prueba;Integrated Security=True"
 		*/
 		static String _cadconexion=@"Data Source=(local);Initial Catalog=prueba;Integrated Security=True";
+		
+		/*Accesos get/set a la propiedad cadconexion(cadena que especifica los parametros de conexion*/
 		public static String cadconexion{
 			get{
 				return _cadconexion;

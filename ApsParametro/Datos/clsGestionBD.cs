@@ -14,15 +14,15 @@ using System.Globalization;
 
 namespace Datos
 {
-	/// <summary>
-	/// Description of clsGestionBD.
-	/// </summary>
+
 	public class clsGestionBD
 	{
 		public clsGestionBD()
 		{
 			
 		}
+		
+		/*Funcion que se encarga de instanciar y devolver un comando de tipo Text*/
 		public static SqlCommand CrearComando()
 		{
 		    String cadconexion = clsConexion.cadconexion;
@@ -33,6 +33,7 @@ namespace Datos
 		    Com.CommandType = CommandType.Text;
 		    return Com;
 		}
+		/*Funcion que se encarga de instanciar y devolver un comando de tipo Procedimiento*/
 		public static SqlCommand CrearComandoProcedimiento(String PA)
 		{
 		    String cadconexion = clsConexion.cadconexion;
@@ -44,15 +45,17 @@ namespace Datos
 		    Com.CommandText=PA;
 		    return Com;
 		}
+		/*Funcion que se encarga de instanciar y devolver un comando ingresando una vista*/
 		public static SqlCommand CrearComandoVista(String V)
 		{
 		    String cadconexion = clsConexion.cadconexion;
 		    SqlConnection Con = new SqlConnection();
 		 	Con.ConnectionString=cadconexion;
-		 	SqlCommand Com= new SqlCommand(V,Con);
+		 	SqlCommand Com= new SqlCommand("select * from "+V,Con);
 		    Com = Con.CreateCommand();
 		    return Com;
 		}
+		/*Funcion que se encarga de ejecutar un comando ingresado como parametro*/
 		public static int EjecutarComando(SqlCommand Com)
 		{
 			try
@@ -69,13 +72,14 @@ namespace Datos
         		Com.Connection.Close();
     		}
 		}
-		public static SqlDataReader DevolverConsulta(String consulta)
+		/*Funcion que se encarga de devolver los resultados de una vista en un objeto Datareader*/
+		public static SqlDataReader DevolverVista(String consulta)
 		{
 			SqlDataReader Lector;
     		try{
 				SqlCommand Com=CrearComandoVista(consulta);
 		        Com.Connection.Open();
-		        Com.CommandText=consulta;
+		        Com.CommandText="select * from "+consulta;
 		        Lector=Com.ExecuteReader();
     		}
    			catch (Exception ex)
@@ -89,7 +93,27 @@ namespace Datos
     		return Lector;
 		}
 		
-		public static DataTable DevolverProcedimiento(SqlCommand Com)
+		/*Funcion que se encarga de devolver la salida de un Procedimiento Almacenado en un objeto Datareader*/
+		public static SqlDataReader DevolverProcedimiento(SqlCommand Com)
+		{
+			SqlDataReader Lector;
+    		try{
+		        Com.Connection.Open();
+		        Lector=Com.ExecuteReader();
+    		}
+   			catch (Exception ex)
+		    { 
+   				throw ex;
+   			}
+		    finally
+    		{ 
+		    	
+		    }
+    		return Lector;
+		}
+		
+		/*Funcion que devuelve el resultado de una vista en un objeto datatable(necesario para los Datagridview :))*/
+		public static DataTable DevolverProcedimiento(String vista )
 		{
 			DataTable tabla = new DataTable();
     		try{

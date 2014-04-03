@@ -6,29 +6,21 @@
  * 
  * To change this template use Tools | Options | Coding | Edit Standard Headers.
  */
+ 
 using System;
 using System.Drawing;
 using System.Windows.Forms;
 
 namespace Presentacion
 {
-	/// <summary>
-	/// Description of frmLogin.
-	/// </summary>
 	public partial class frmLogin : Form
 	{
 		public frmLogin()
 		{
-			//
-			// The InitializeComponent() call is required for Windows Forms designer support.
-			//
 			InitializeComponent();
-			
-			//
-			// TODO: Add constructor code after the InitializeComponent() call.
-			//
 		}
-		//METODOS ADICIONALES
+		
+		//Metodos Adicionales
 		private void DecidirInterfaz(){
 			if(Negocios.GestionUsuario.ObtenerNumeroUsuarios()<1){
 				new frmNuevoUsuario().Visible=true;
@@ -38,9 +30,16 @@ namespace Presentacion
 			lblUsuario.Text=Negocios.GestionUsuario.ObtenerUsuario();
 		}
 		
+		//Eventos
 		void Button1Click(object sender, EventArgs e)
 		{
-			
+			int resultado=Negocios.GestionUsuario.ValidarUsuario(txtContraseña.Text);
+			if(resultado==0){
+				clsDialogos.MensajeExito("Contraseña Incorrecta","Vuelve a ingresar tu contraseña ;)");
+			}else if(resultado==1){
+				this.Visible=false;
+				new frmCuentas().Visible=true;
+			}
 		}
 		
 		void FrmLoginLoad(object sender, EventArgs e)
@@ -61,6 +60,11 @@ namespace Presentacion
 		}
 		
 		void Label1Click(object sender, EventArgs e)
+		{
+			
+		}
+		
+		void TstOpcionesItemClicked(object sender, ToolStripItemClickedEventArgs e)
 		{
 			
 		}
