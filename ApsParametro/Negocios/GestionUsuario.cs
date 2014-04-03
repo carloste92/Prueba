@@ -21,5 +21,13 @@ namespace Negocios
 		public static int InsertarUsuario(String nombre,String contra){
 			return Datos.clsUsuario.InsertarUsuario(nombre,contra);
 		}
+		public static int ObtenerNumeroUsuarios(){
+			return Datos.clsUsuario.ObtenerNumeroUsuarios();
+		}
+		public static String ObtenerUsuario(){
+			string Usuario=Datos.clsUsuario.ObtenerUsuario();
+
+			return Usuario;
+		}
 	}
 }

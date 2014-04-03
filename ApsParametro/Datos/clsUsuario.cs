@@ -33,8 +33,20 @@ namespace Datos
 			comando.Parameters.AddWithValue("@contra",contra);
 			return clsGestionBD.EjecutarComando(comando);
 		}
-		public static int ObtenerUsuario(){
-			return 1;
+		public static int ObtenerNumeroUsuarios(){
+			int Num=clsGestionBD.DevolverConsulta("Select * from V_ObtenerUsuario").FieldCount;
+			clsGestionBD.DevolverConsulta("Select * from V_ObtenerUsuario").Close();
+			return Num ;
+		}
+		public static String ObtenerUsuario(){
+			String usuario="";
+			SqlDataReader lector=clsGestionBD.DevolverConsulta("Select * from V_ObtenerUsuario");
+			while(lector.Read()){
+				usuario=lector.GetString(0);
+				break;
+			}
+			clsGestionBD.DevolverConsulta("Select * from V_ObtenerUsuario").Close();
+			return usuario;
 		}
 	}
 }

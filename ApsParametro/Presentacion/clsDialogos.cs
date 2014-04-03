@@ -25,5 +25,13 @@ namespace Presentacion
 		public static void MensajeError(String titulo,String contenido){
 			MessageBox.Show(contenido,titulo,MessageBoxButtons.OK,MessageBoxIcon.Error);
 		}
+		public static DialogResult DialogoInformacion(String titulo,String contenido){
+			return MessageBox.Show(contenido,titulo,MessageBoxButtons.OKCancel,MessageBoxIcon.Information);
+		}
+		public static void DialogoSalir(DialogResult a,Form f){
+			if(a==DialogResult.OK){
+				f.Dispose();
+			}
+		}
 	}
 }

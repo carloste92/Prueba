@@ -10,6 +10,7 @@
 using System.Data.SqlClient;
 using System.Data;
 using System;
+using System.Globalization;
 
 namespace Datos
 {
@@ -43,6 +44,15 @@ namespace Datos
 		    Com.CommandText=PA;
 		    return Com;
 		}
+		public static SqlCommand CrearComandoVista(String V)
+		{
+		    String cadconexion = clsConexion.cadconexion;
+		    SqlConnection Con = new SqlConnection();
+		 	Con.ConnectionString=cadconexion;
+		 	SqlCommand Com= new SqlCommand(V,Con);
+		    Com = Con.CreateCommand();
+		    return Com;
+		}
 		public static int EjecutarComando(SqlCommand Com)
 		{
 			try
@@ -59,7 +69,28 @@ namespace Datos
         		Com.Connection.Close();
     		}
 		}
-		public static DataTable EjecutarComandoSelect(SqlCommand Com){
+		public static SqlDataReader DevolverConsulta(String consulta)
+		{
+			SqlDataReader Lector;
+    		try{
+				SqlCommand Com=CrearComandoVista(consulta);
+		        Com.Connection.Open();
+		        Com.CommandText=consulta;
+		        Lector=Com.ExecuteReader();
+    		}
+   			catch (Exception ex)
+		    { 
+   				throw ex;
+   			}
+		    finally
+    		{ 
+		    	
+		    }
+    		return Lector;
+		}
+		
+		public static DataTable DevolverProcedimiento(SqlCommand Com)
+		{
 			DataTable tabla = new DataTable();
     		try{
 		        Com.Connection.Open();
@@ -73,8 +104,9 @@ namespace Datos
    			}
 		    finally
     		{ 
-		    	Com.Connection.Close(); }
-    			return tabla;
-			}
+		    	Com.Connection.Close(); 
+		    }
+    		return tabla;
+		}
 	}
 }
